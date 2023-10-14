@@ -4,9 +4,9 @@ import time
 import pandas as pd
 from datetime import datetime
 from pytz import timezone
-from driver import chrome
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
+from driver import chrome
 
 
 class EVCar:
@@ -69,8 +69,10 @@ def main():
     for model, url in ev.models.items():
         time.sleep(3)
         page_source = ev.search(url)
+        # 최저가 기준 정렬
         ev.click_price_sort()
         car_list_by_min = ev.get_car_list(page_source)
+        # 최고가 기준 정렬
         ev.click_price_sort()
         car_list_by_max = ev.get_car_list(page_source)
         price_list_by_min = ev.get_price_list(car_list_by_min)
