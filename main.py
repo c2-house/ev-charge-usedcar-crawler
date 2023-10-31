@@ -84,13 +84,11 @@ def main():
             "name": model,
             "min_price": min_price,
             "max_price": max_price,
-            "create_at": datetime.now(timezone("Asia/Seoul")).isoformat(),
+            "created_at": datetime.now(timezone("Asia/Seoul")).isoformat(),
             "image": image,
         }
         total.append(item)
         print(f"{model}의 최저가는 {min_price}만원, 최고가는 {max_price}만원 입니다.")
-
-    print(total)
 
     df = pd.DataFrame(total)
     df.to_csv("result.csv", index=False, encoding="utf-8-sig")
